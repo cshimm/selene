@@ -1412,7 +1412,7 @@ class Config:
             return TimeoutException(
                 error.msg
                 + f'''
-Screenshot: file://{path}'''
+Screenshot: {path}'''
             )
 
         def save_and_log_page_source(error: TimeoutException) -> Exception:
@@ -1425,7 +1425,7 @@ Screenshot: file://{path}'''
             )
 
             path = self._save_page_source_strategy(self, filename)
-            return TimeoutException(error.msg + f'\nPageSource: file://{path}')
+            return TimeoutException(error.msg + f'\nPageSource: {path}')
 
         return fp.pipe(
             save_and_log_screenshot if self.save_screenshot_on_failure else None,
